@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<html>
+
+<head>
+    <title="Project"></title>
+        <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body>
+    <div id="leftBar">
+        <div id="leftBarInner"></div>
+    </div>
+    <canvas id="myCanvas"></canvas>
+    <div id="rightBar">
+        <div id="rightBarInner">
+            Scale:
+            <select id="scale">
+                <option value="chromatic">Chromatic</option>
+                <option value="major">Major</option>
+                <option value="harmonic">Minor (harmonic)</option>
+                <option value="melodic">Minor (melodic)</option>
+                <option value="natural">Minor (natural)</option>
+                <option value="ionian">Ionian (Major)</option>
+                <option value="dorian">Dorian</option>
+                <option value="phrygian">Phrygian</option>
+                <option value="lydian">Lydian</option>
+                <option value="mixolydian">Mixolydian</option>
+                <option value="aeolian">Aeolian</option>
+                <option value="locrian">Locrian</option>
+                <option value="custom">Custom...</option>
+            </select>
+            <button type="button" id="edit">Edit</button>
+            <br>
+            <br> Key:
+            <select id="key">
+                <option value="0">C</option>
+                <option value="1">C♯</option>
+                <option value="2">D</option>
+                <option value="3">D♯</option>
+                <option value="4">E</option>
+                <option value="5">F</option>
+                <option value="6">F♯</option>
+                <option value="7">G</option>
+                <option value="8">G♯</option>
+                <option value="9">A</option>
+                <option value="10">A♯</option>
+                <option value="11">B</option>
+            </select>
+            <br>
+            <br>
+            <div id="inversion">
+            </div>
+            Transpose:
+            <br>
+            <button type="button" id="left">&lt;&lt;</button>
+            <button type="button" id="right">&gt;&gt;</button>
+            <br>
+            <br>
+            <button type="button" id="play">Play</button>
+            <button type="button" id="save">Save</button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

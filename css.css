@@ -1,0 +1,29 @@
+body{
+    margin:0px;
+    font-family:Arial;
+}
+#myCanvas{
+    position:absolute;
+    top:0px;
+}
+
+#leftBarInner{
+    text-align:center;
+}
+
+#rightBarInner{
+    text-align:center;
+    margin-top:50px;
+}
+
+#leftBar{
+    z-index:99;
+    position:absolute;
+    top:0px;
+    overflow:auto;    
+}
+
+#rightBar{
+    position:absolute;    
+    right:0px;
+}
