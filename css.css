@@ -1,29 +1,27 @@
-body{
-    margin:0px;
-    font-family:Arial;
-}
-#myCanvas{
-    position:absolute;
-    top:0px;
+#myCanvas {}
+
+#leftBarInner {
+    text-align: center;
+    overflow-y: scroll;
 }
 
-#leftBarInner{
-    text-align:center;
+#rightBarInner {
+    text-align: center;
+    padding: 25px;
 }
 
-#rightBarInner{
-    text-align:center;
-    margin-top:50px;
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
 }
 
-#leftBar{
-    z-index:99;
-    position:absolute;
-    top:0px;
-    overflow:auto;    
+label {
+    padding: 0px 5px;
+    vertical-align: baseline;
 }
 
-#rightBar{
-    position:absolute;    
-    right:0px;
+input[type="radio"] {
+    margin-right: 2.5px;
 }
