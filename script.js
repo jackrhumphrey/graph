@@ -1,5 +1,28 @@
 var scale = document.getElementById("scale");
 
+var c = document.getElementById("myCanvas");
+
+var height = window.innerHeight;
+var width = window.innerHeight;
+c.height = height;
+c.width = height;
+var margin = height / 6;
+
+function resize() {
+  height = window.innerHeight;
+  width = window.innerHeight;
+  c.height = height;
+  c.width = height;
+  valid = true;
+  CanvasState();
+}
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $(window).on("resize", resize);
+  }, 100);
+});
+
 scale.onchange = function() {
   var value = scale.options[scale.selectedIndex].value;
   if (value == "chromatic") {
@@ -417,14 +440,6 @@ save.onclick = function() {
   c2.id = "canvas" + counter;
 
   var square = document.getElementById("leftBarInner").clientWidth;
-  // if (square < 300) {
-  //     square *= 2;
-  //     if (square > 400) {
-  //         square = 400;
-  //     }
-  // }
-  // c2.height = square / 2;
-  // c2.width = square / 2;
   c2.height = square;
   c2.width = square;
 
@@ -489,8 +504,12 @@ save.onclick = function() {
   }
   var leftBarInner = document.getElementById("leftBarInner");
   var br = document.createElement("br");
-  document.getElementById("leftBarInner").insertBefore(br, leftBarInner.childNodes[0]);
-  document.getElementById("leftBarInner").insertBefore(c2, leftBarInner.childNodes[0]);
+  document
+    .getElementById("leftBarInner")
+    .insertBefore(br, leftBarInner.childNodes[0]);
+  document
+    .getElementById("leftBarInner")
+    .insertBefore(c2, leftBarInner.childNodes[0]);
   var savedScale = scale.options[scale.selectedIndex].value;
   var savedKey = parseInt(key.options[key.selectedIndex].value);
   if ((radios.length = 0)) {
@@ -663,20 +682,6 @@ right.onclick = function() {
   valid = true;
 };
 
-var c = document.getElementById("myCanvas");
-
-var height = window.innerHeight;
-var width = window.innerWidth;
-c.height = height;
-c.width = height;
-// var left = width / 2 - height / 2;
-// var sidebarWidth = (width - height) / 2;
-var margin = height / 6;
-// document.getElementById('myCanvas').setAttribute('style', 'left:' + left + 'px;');
-
-// document.getElementById('leftBarInner').setAttribute('style', 'height:' + height + 'px;width:' + sidebarWidth + 'px;');
-// document.getElementById('rightBar').setAttribute('style', 'height:' + height + 'px;width:' + sidebarWidth + 'px;');
-
 var nodes = [];
 
 var graph = [];
@@ -829,6 +834,8 @@ function CanvasState() {
 }
 
 function draw() {
+  height = c.height;
+
   if (valid) {
     for (var i = 0; i < nodes.length; i++) {
       if (!nodes[i].include) {
@@ -889,7 +896,7 @@ function draw() {
     }
     doNotPlay = false;
 
-    var controlWidth = $('#rightBarInner').width() + 50;
+    var controlWidth = $("#rightBarInner").width() + 50;
 
     var inversion = document.getElementById("inversion");
     while (inversion.firstChild) {
@@ -927,10 +934,14 @@ function draw() {
       inversion.appendChild(br2);
     }
 
-    var controlHeight = height - $('#rightBarInner').height() - 75;
-    
-    document.getElementById('leftBarInner').setAttribute('style', 'height:' + controlHeight + 'px;');
-    document.getElementById('rightBarInner').setAttribute('style', 'width:' + controlWidth + 'px;');
+    var controlHeight = height - $("#rightBarInner").height() - 75;
+
+    document
+      .getElementById("leftBarInner")
+      .setAttribute("style", "height:" + controlHeight + "px;");
+    document
+      .getElementById("rightBarInner")
+      .setAttribute("style", "width:" + controlWidth + "px;");
 
     var ctx = c.getContext("2d");
     ctx.clearRect(0, 0, c.height, c.height);
