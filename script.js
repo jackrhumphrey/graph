@@ -13,8 +13,8 @@ function resize() {
   width = window.innerHeight;
   c.height = height;
   c.width = height;
+  doNotPlay = true;
   valid = true;
-  CanvasState();
 }
 
 $(document).ready(function() {
