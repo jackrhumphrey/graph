@@ -17,13 +17,13 @@ function resize() {
   valid = true;
 }
 
-$(document).ready(function() {
-  setTimeout(function() {
+$(document).ready(function () {
+  setTimeout(function () {
     $(window).on("resize", resize);
   }, 100);
 });
 
-scale.onchange = function() {
+scale.onchange = function () {
   var value = scale.options[scale.selectedIndex].value;
   if (value == "chromatic") {
     for (var i = 0; i < nodes.length; i++) {
@@ -381,7 +381,7 @@ scale.onchange = function() {
 };
 
 var optionCounter = 0;
-edit.onclick = function() {
+edit.onclick = function () {
   if (state == "define") {
     document.getElementById("edit").innerHTML = "Edit";
     state = "select";
@@ -421,7 +421,7 @@ function keyChange() {
   }
 }
 
-key.onchange = function() {
+key.onchange = function () {
   resetPitch();
   radioChange();
   keyChange();
@@ -430,11 +430,11 @@ key.onchange = function() {
 
 var radios = document.getElementsByName("inversion");
 
-play.onclick = function() {
+play.onclick = function () {
   valid = true;
 };
 
-save.onclick = function() {
+save.onclick = function () {
   doNotPlay = true;
   var c2 = document.createElement("CANVAS");
   c2.id = "canvas" + counter;
@@ -451,21 +451,21 @@ save.onclick = function() {
   //draw interface
 
   ctx.fillStyle = "#000";
-  ctx.font = size / 11.5 + "px Arial";
+  ctx.font = size / 25 + "px Arial";
 
   for (i = 0; i < nodes.length; i++) {
     var ang = ((2 * Math.PI) / nodes.length) * i - Math.PI / 2;
-    nodes[i].x = Math.cos(ang) * ((size * 0.6) / 2) + size / 2;
-    nodes[i].y = Math.sin(ang) * ((size * 0.6) / 2) + size / 2;
+    nodes[i].x = (Math.cos(ang) * (size * 0.75)) / 2 + size / 2;
+    nodes[i].y = (Math.sin(ang) * (size * 0.75)) / 2 + size / 2;
   }
 
   for (i = 0; i < nodes.length; i++) {
     var ang = ((2 * Math.PI) / nodes.length) * i - Math.PI / 2;
-    var x = Math.cos(ang) * ((size * 0.8) / 2) + size / 2;
-    var y = Math.sin(ang) * ((size * 0.8) / 2) + size / 2;
+    var x = (Math.cos(ang) * (size * 0.875)) / 2 + size / 2;
+    var y = (Math.sin(ang) * (size * 0.875)) / 2 + size / 2;
     var ctx = c2.getContext("2d");
     if (!nodes[i].include) {
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#eee";
     } else {
       ctx.fillStyle = "#000";
     }
@@ -492,13 +492,13 @@ save.onclick = function() {
   for (i = 0; i < nodes.length; i++) {
     var ctx = c2.getContext("2d");
     ctx.beginPath();
-    ctx.arc(nodes[i].x, nodes[i].y, size / 80, 0, 2 * Math.PI);
+    ctx.arc(nodes[i].x, nodes[i].y, size / 150, 0, 2 * Math.PI);
     if (nodes[i].selected) {
       ctx.fillStyle = "#f00";
     } else if (nodes[i].include) {
       ctx.fillStyle = "#000";
     } else {
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#eee";
     }
     ctx.fill();
   }
@@ -532,7 +532,7 @@ save.onclick = function() {
     savedNodes.push(newNode);
   }
 
-  document.getElementById("canvas" + counter).onclick = function() {
+  document.getElementById("canvas" + counter).onclick = function () {
     nodes = [];
     for (var i = 0; i < savedNodes.length; i++) {
       var newNode = new Node();
@@ -638,7 +638,7 @@ function radioChange() {
 
 var left = document.getElementById("left");
 
-left.onclick = function() {
+left.onclick = function () {
   var temp = [];
   var j = 0;
   for (var i = 0; i < nodes.length; i++) {
@@ -661,7 +661,7 @@ left.onclick = function() {
 
 var right = document.getElementById("right");
 
-right.onclick = function() {
+right.onclick = function () {
   var temp = [];
   var j = 0;
   for (var i = 0; i < nodes.length; i++) {
@@ -766,7 +766,7 @@ function init() {
 }
 
 function CanvasState() {
-  c.addEventListener("mousedown", function(e) {
+  c.addEventListener("mousedown", function (e) {
     var mx = e.x - c.offsetLeft;
     var my = e.y - c.offsetTop;
     if (state === "select") {
@@ -828,7 +828,7 @@ function CanvasState() {
       // }
     }
   });
-  setInterval(function() {
+  setInterval(function () {
     draw();
   }, 30);
 }
